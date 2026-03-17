@@ -2,5 +2,8 @@
 
 public class RentalService
 {
-    
+    public static void Main(string[] args)
+    {
+        
+    }
 }
