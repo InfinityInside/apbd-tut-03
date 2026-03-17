@@ -14,4 +14,5 @@ public abstract class Equipment
         _identifier = ++_lastIdentifier;
         Name = name;
     }
+    
 }
