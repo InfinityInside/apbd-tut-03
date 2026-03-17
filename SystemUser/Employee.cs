@@ -2,5 +2,7 @@
 
 public class Employee : SystemUser
 {
-    
+    public Employee(string firstName, string lastName) : base(firstName, lastName)
+    {
+    }
 }
