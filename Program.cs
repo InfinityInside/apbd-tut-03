@@ -1,4 +1,5 @@
-﻿using apbd_tut_03.Equipment;
+﻿using System.Drawing;
+using apbd_tut_03.Equipment;
 using apbd_tut_03.SystemUser;
 
 namespace apbd_tut_03;
@@ -10,9 +11,10 @@ public class Program
         var user1 = new Employee("John", "Snow");
         var user2 = new Student("Robert", "Stark");
 
-        var camera1 = new Camera("nikon");
-        var laptop1 = new Laptop("mac");
-        var projector1 = new Projector("cool");
+        var camera1 = new Camera("nikon", Color.AliceBlue, 10, true);
+        var laptop1 = new Laptop("mac", Color.Black, "M2", "rtx2080");
+        var projector1 = new Projector("cool", Color.Gray, 1000, "16:9");
+        
         
         var rs = new RentalService();
         rs.AddUser(user1);
@@ -25,7 +27,9 @@ public class Program
         rs.DisplayAllEquipment();
         rs.DisplayAvailableEquipment();
         
-        rs.RentToUser();
+        rs.RentToUser(user1, camera1, TimeSpan.FromDays(4));
+        rs.RentToUser(user2, camera1, TimeSpan.FromDays(4));
+        rs.RentToUser(user2, laptop1, TimeSpan.Zero);
         rs.ReturnEquipment();
         
         rs.ChangeEquipmentAvailability();

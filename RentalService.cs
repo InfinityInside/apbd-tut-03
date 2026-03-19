@@ -33,10 +33,14 @@ public class RentalService
         }
         
     }
+    // TODO move isAvailable from equipment to method here
 
-    public void RentToUser()
+    public void RentToUser(SystemUser.SystemUser systemUser, Equipment.Equipment equipment, TimeSpan timeSpan)
     {
-        
+        int numOfRentals = Rentals.FindAll((r => r.User == systemUser)).Count();
+        var rental = new Rental(systemUser, equipment, DateTime.Now, timeSpan);
+        Rentals.Add(rental);
+
     }
 
     public void ReturnEquipment()

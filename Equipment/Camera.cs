@@ -6,9 +6,11 @@ public class Camera : Equipment
 {
     public int MaxMagnification { get; set; }
     public bool HasHdr { get; set; }
-    
-    public Camera(string name, Color color) : base(name, color)
+
+    public Camera(string name, Color color, int maxMagnification, bool hasHdr) : base(name, color)
     {
+        MaxMagnification = maxMagnification;
+        HasHdr = hasHdr;
     }
 
     public override void Display()
