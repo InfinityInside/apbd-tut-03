@@ -6,9 +6,6 @@ public class RentalService
     public List<Equipment.Equipment> Equipments = [];
     public List<SystemUser.SystemUser> Users = [];
 
-
-
-
     public void AddUser(SystemUser.SystemUser user)
     {
         Users.Add(user);
@@ -21,11 +18,19 @@ public class RentalService
 
     public void DisplayAllEquipment()
     {
-        
+        foreach (var equipment in Equipments)
+        {
+            equipment.Display();
+        }
     }
     
     public void DisplayAvailableEquipment()
     {
+        foreach (var equipment in Equipments)
+        {
+            if (equipment.IsAvailable)
+                equipment.Display();
+        }
         
     }
 
@@ -59,8 +64,4 @@ public class RentalService
         return "";
     }
     
-    public static void Main(string[] args)
-    {
-        
-    }
 }
