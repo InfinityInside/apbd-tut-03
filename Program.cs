@@ -27,19 +27,19 @@ public class Program
         rs.DisplayAllEquipment();
         rs.DisplayAvailableEquipment();
         
-        rs.RentToUser(user1, camera1, TimeSpan.FromDays(4));
+        rs.RentToUser(user1, camera1, TimeSpan.FromDays(4)); // check limits
         rs.RentToUser(user2, camera1, TimeSpan.FromDays(4));
         rs.RentToUser(user2, laptop1, TimeSpan.Zero);
         rs.ReturnEquipment();
         
         rs.ChangeEquipmentAvailability();
         
-        rs.DisplayUserRentals();
+        rs.DisplayUserRentals(user1);
         
         rs.DisplayOverdueRentals();
-        
-        rs.GenerateShortSummary()
-        
+
+        rs.GenerateShortSummary();
+
 
     }
 }

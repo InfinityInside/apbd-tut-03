@@ -11,7 +11,7 @@ public class Rental
     
     public TimeSpan RentalTime { get; set; }
     
-    public DateTime ReturnDate { get; set; }
+    public DateTime? ReturnDate { get; set; }
 
     public Rental(SystemUser.SystemUser user, Equipment.Equipment equipment, DateTime rentalDate, TimeSpan rentalTime)
     {
@@ -31,9 +31,12 @@ public class Rental
     {
         return ReturnDate < GetReturnOnTimeDate();
     }
-    
-    
-    
+
+
+    public void Display()
+    {
+        Console.WriteLine($"Rental: \nUser: {User}\nEquipment: {Equipment}\nRental Date: {RentalDate}\nRental Time: {RentalTime}\n{(ReturnDate != null ? "Returned" : "")}");
+    }
     
     
     

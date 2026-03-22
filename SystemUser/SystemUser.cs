@@ -14,4 +14,29 @@ public abstract class SystemUser
         FirstName = firstName;
         LastName = lastName;
     }
+    
+    public virtual int RentalsNumberLimit => 2;
+
+    protected bool Equals(SystemUser other)
+    {
+        return _identifier == other._identifier;
+    }
+
+    public override bool Equals(object? obj)
+    {
+        if (obj is null) return false;
+        if (ReferenceEquals(this, obj)) return true;
+        if (obj.GetType() != GetType()) return false;
+        return Equals((SystemUser)obj);
+    }
+
+    public override int GetHashCode()
+    {
+        return _identifier;
+    }
+
+    public override string ToString()
+    {
+        return $"{_identifier} {FirstName} {LastName}";
+    }
 }
