@@ -13,6 +13,8 @@ public abstract class Equipment
     public Color Color { get; set; }
     public bool IsAvailable { get; set; }
 
+    public virtual double PerDayFee => 10d;
+
     protected Equipment(string name, Color color)
     {
         _identifier = ++_lastIdentifier;
@@ -42,6 +44,6 @@ public abstract class Equipment
 
     public override string ToString()
     {
-        return $"{_identifier} {Name} {Color}";
+        return $"{_identifier} {Name} {Color} {(IsAvailable ? "" : "Not ")} Available";
     }
 }

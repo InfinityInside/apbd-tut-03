@@ -8,4 +8,9 @@ public class Employee : SystemUser
     }
 
     public override int RentalsNumberLimit => 5;
+
+    public override string ToString()
+    {
+        return "Employee " + base.ToString();
+    }
 }

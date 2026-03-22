@@ -35,9 +35,13 @@ public class Rental
 
     public void Display()
     {
-        Console.WriteLine($"Rental: \nUser: {User}\nEquipment: {Equipment}\nRental Date: {RentalDate}\nRental Time: {RentalTime}\n{(ReturnDate != null ? "Returned" : "")}");
+        Console.WriteLine(ToString());
     }
-    
-    
-    
+
+
+    public override string ToString()
+    {
+        return
+            $"Rental: \nUser: {User}\nEquipment: {Equipment}\nRental Date: {RentalDate}\nRental Time: {RentalTime}\n{(ReturnDate != null ? "Returned" : "")}";
+    }
 }
