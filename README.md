@@ -10,6 +10,7 @@ The Rentals:
  - can be created through the combination of a User, Equipment and a TimeSpan
  - can be returned 
  - displayed (only for certain User or only those which are overdue)
+
 It is all combined into a short summary which:
  - prints all Users
  - prints all Equipment
