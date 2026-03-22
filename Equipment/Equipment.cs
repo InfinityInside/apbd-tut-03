@@ -20,6 +20,7 @@ public abstract class Equipment
         _identifier = ++_lastIdentifier;
         Name = name;
         Color = color;
+        IsAvailable = true;
     }
 
     public abstract void Display();

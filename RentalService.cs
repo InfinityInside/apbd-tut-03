@@ -20,6 +20,7 @@ public class RentalService
 
     public void DisplayAllEquipment()
     {
+        Console.WriteLine("All Equipment: ");
         foreach (var equipment in Equipments)
         {
             equipment.Display();
@@ -28,6 +29,7 @@ public class RentalService
     
     public void DisplayAvailableEquipment()
     {
+        Console.WriteLine("Available Equipment: ");
         foreach (var equipment in Equipments)
         {
             if (equipment.IsAvailable)
@@ -38,6 +40,7 @@ public class RentalService
 
     public void RentToUser(SystemUser.SystemUser systemUser, Equipment.Equipment equipment, TimeSpan timeSpan)
     {
+        Console.WriteLine($"Renting {equipment} to {systemUser} for {timeSpan}");
         var numOfRentals = Rentals.Count(r => Equals(r.User, systemUser) && r.ReturnDate == null);
         if (numOfRentals >= systemUser.RentalsNumberLimit)
         {
@@ -51,7 +54,6 @@ public class RentalService
             return;
         }
         
-        
         var rental = new Rental(systemUser, equipment, DateTime.Now, timeSpan);
         equipment.IsAvailable = false;
         Rentals.Add(rental);
@@ -60,6 +62,7 @@ public class RentalService
 
     public void ReturnEquipment(Equipment.Equipment equipment)
     {
+        Console.WriteLine($"Returning Equipment {equipment}");
         var rental = Rentals.FirstOrDefault(r => r.ReturnDate == null && Equals(r.Equipment, equipment));
         if (rental == null)
             return;
@@ -80,6 +83,7 @@ public class RentalService
 
     public void DisplayUserRentals(SystemUser.SystemUser user)
     {
+        Console.WriteLine($"Active rentals for {user}: ");
         foreach (var rental in Rentals.Where(r => Equals(r.User, user) && r.ReturnDate == null))
         {
             rental.Display();
@@ -88,7 +92,8 @@ public class RentalService
 
     public void DisplayOverdueRentals()
     {
-        foreach (var rental in Rentals.Where(r => r.GetReturnOnTimeDate() < DateTime.Now))
+        Console.WriteLine("Overdue Rentals: ");
+        foreach (var rental in Rentals.Where(r => r.ReturnDate == null && r.GetReturnOnTimeDate() < DateTime.Now))
         {
             rental.Display();
         }
@@ -96,6 +101,7 @@ public class RentalService
 
     public void GenerateShortSummary()
     {
+        Console.WriteLine("Short Summary: ");
         Console.WriteLine($"Users: {string.Join(", ", Users)}");
         Console.WriteLine($"Equipment: {string.Join(", ", Equipments)}");
         Console.WriteLine($"Rentals: {string.Join(", ", Rentals)}");
